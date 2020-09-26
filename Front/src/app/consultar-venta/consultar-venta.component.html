@@ -1,0 +1,52 @@
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card card-plain">
+                    <div class="card-header card-header-danger">
+                        <h4 class="card-title mt-0"> Ventas</h4>
+                        <p class="card-category"> Consulta de Ventas</p>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table table-hover">
+                                <thead class="">
+                                    <th>
+                                        Numero Venta
+                                    </th>
+                                    <th>
+                                        Nombre Cliente
+                                    </th>
+                                    <th>
+                                        Fecha de la venta
+                                    </th>
+                                    <th>
+                                        Valor Total
+                                    </th>
+                                    <th>
+                                        Acciones
+                                    </th>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let factura of facturas;let i=index">
+                                        <td>{{factura.numVenta}}</td>
+                                        <td>{{factura.cliente.nombreCliente}}</td>
+                                        <td>{{factura.fechaVenta}}</td>
+                                        <td>{{factura.valorTotal}}</td>
+                                        <td>
+                                            <div class="btn-group flex-btn-group-container">
+                                                <button type="submit" class="btn btn-info btn-sm" (click)="verDetallePos(i)">                                                    
+                                                    <span class="d-none d-md-inline">Ver Detalle</span>
+                                                </button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
