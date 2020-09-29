@@ -21,7 +21,7 @@
                                         Fecha de la venta
                                     </th>
                                     <th>
-                                        Valor Total
+                                        Valor Total Venta
                                     </th>
                                     <th>
                                         Acciones
@@ -29,13 +29,13 @@
                                 </thead>
                                 <tbody>
                                     <tr *ngFor="let factura of facturas;let i=index">
-                                        <td>{{factura.numVenta}}</td>
-                                        <td>{{factura.cliente.nombreCliente}}</td>
+                                        <td>{{factura.idFactura}}</td>
+                                        <td>{{factura.cliente.nombres}}</td>
                                         <td>{{factura.fechaVenta}}</td>
                                         <td>{{factura.valorTotal}}</td>
                                         <td>
                                             <div class="btn-group flex-btn-group-container">
-                                                <button type="submit" class="btn btn-info btn-sm" (click)="verDetallePos(i)">                                                    
+                                                <button type="submit" class="btn btn-info btn-sm" (click)="modalVerDetalle(mymodal,i)">                                                    
                                                     <span class="d-none d-md-inline">Ver Detalle</span>
                                                 </button>
                                             </div>
@@ -50,3 +50,58 @@
         </div>
     </div>
 </div>
+
+<ng-template #mymodal let-modal>
+    <div class="modal-header">
+        <h4 class="modal-title" id="modal-basic-title">Detalle Factura</h4>
+        <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+            <span aria-hidden="true">×</span>
+          </button>
+    </div>
+    <div class="modal-body">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card card-plain">
+                    <div class="card-header card-header-danger">
+                        <p class="card-category"> Consulta Detalle Factura </p>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table table-hover">
+                                <thead class="">
+                                    <th>
+                                        Numero Detalle Venta
+                                    </th>
+                                    <th>
+                                        Nombre Producto
+                                    </th>
+                                    <th>
+                                        Valor Unidad
+                                    </th>
+                                    <th>
+                                        Cantidad
+                                    </th>
+                                    <th>
+                                        Valor Total Por Producto
+                                    </th>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let detalleFacturas of detalleFacturas;let i=index">
+                                        <td>{{detalleFacturas.idFacturaDetalle}}</td>
+                                        <td>{{detalleFacturas.producto.nombre}}</td>
+                                        <td>{{detalleFacturas.valorUnidad}}</td>
+                                        <td>{{detalleFacturas.cantidad}}</td>
+                                        <td>{{detalleFacturas.valorTotal}}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Ok</button>
+    </div>
+</ng-template>

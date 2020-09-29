@@ -4,7 +4,7 @@ import java.util.List;
 
 import com.coomeva.superantojitos.domain.TestProducto;
 
-public interface ProductoService {
+public interface TestProductoService {
 
 	List<TestProducto> findAll();
 }

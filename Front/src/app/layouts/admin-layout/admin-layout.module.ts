@@ -7,7 +7,7 @@ import { DashboardComponent } from '../../dashboard/dashboard.component';
 import { ConsultarProductosComponent } from '../../consultar-productos/consultar-productos.component';
 import { ConsultarVentaComponent } from '../../consultar-venta/consultar-venta.component';
 import { RealizarVentaComponent } from '../../realizar-venta/realizar-venta.component';
-import { IconsComponent } from '../../icons/icons.component';
+import { ConsultarClientesComponent } from '../../consultar-clientes/consultar-clientes.component';
 import { MapsComponent } from '../../maps/maps.component';
 import { NotificationsComponent } from '../../notifications/notifications.component';
 import { UpgradeComponent } from '../../upgrade/upgrade.component';
@@ -36,7 +36,7 @@ import {MatSelectModule} from '@angular/material/select';
     ConsultarProductosComponent,
     ConsultarVentaComponent,
     RealizarVentaComponent,
-    IconsComponent,
+    ConsultarClientesComponent,
     MapsComponent,
     NotificationsComponent,
     UpgradeComponent,

@@ -27,7 +27,7 @@ public class TestCliente implements Serializable {
 	@Basic(optional = false)
 	@NotNull
 	@Column(name = "ID_CLIENTE")
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long idCliente;
 
 	@Basic(optional = false)

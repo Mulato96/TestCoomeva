@@ -5,12 +5,12 @@
                 <div class="row">
                     <div class="col-md-6">
                         <mat-form-field class="example-full-width">
-                            <input matInput placeholder="Numero Identificacion Cliente">
+                            <input matInput placeholder="Numero Identificacion Cliente" (change)="buscaCliente()" [(ngModel)]="identificacion">
                         </mat-form-field>
                     </div>
                     <div class="col-md-6">
                         <mat-form-field class="example-full-width">
-                            <input matInput placeholder="Nombre Cliente (disabled)" disabled>
+                            <input matInput placeholder="Nombre Cliente (disabled)" disabled [(ngModel)]="nombreCliente">
                         </mat-form-field>
                     </div>
                     <div class="card">
@@ -18,36 +18,36 @@
                             <h4 class="card-title">Agregar Productos</h4>
                         </div>
                         <div class="card-body">
-                            <form>
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <mat-form-field appearance="fill">
-                                            <mat-label>Producto</mat-label>
-                                            <mat-select>
-                                                <mat-option *ngFor="let food of foods" [value]="food.value">
-                                                    {{food.viewValue}}
-                                                </mat-option>
-                                            </mat-select>
-                                        </mat-form-field>
-                                    </div>
+                            <!-- <form> -->
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <mat-form-field appearance="fill">
+                                        <mat-label>Producto</mat-label>
+                                        <mat-select [(ngModel)]="producto" (selectionChange)="datosProducto()">
+                                            <mat-option *ngFor="let producto of productos" [value]="producto">
+                                                {{producto.nombre}}
+                                            </mat-option>
+                                        </mat-select>
+                                    </mat-form-field>
                                 </div>
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <mat-form-field class="example-full-width">
-                                            <input matInput placeholder="Precio Producto (disabled)" disabled>
-                                        </mat-form-field>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <mat-form-field class="example-full-width">
-                                            <input matInput placeholder="Precio Producto (disabled)" disabled>
-                                        </mat-form-field>
-                                    </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <mat-form-field class="example-full-width">
+                                        <input matInput placeholder="Precio Unidad Producto (disabled)" disabled [(ngModel)]="precioUnidad">
+                                    </mat-form-field>
                                 </div>
+                                <div class="col-md-6">
+                                    <mat-form-field class="example-full-width">
+                                        <input matInput placeholder="Cantidad" type="number" [(ngModel)]="cantidad">
+                                    </mat-form-field>
+                                </div>
+                            </div>
 
 
-                                <button mat-raised-button type="submit" class="btn btn-info pull-right">Agregar Producto</button>
-                                <div class="clearfix"></div>
-                            </form>
+                            <button mat-raised-button type="submit" class="btn btn-info pull-right" (click)="addProducto()">Agregar Producto</button>
+                            <div class="clearfix"></div>
+                            <!-- </form> -->
                         </div>
                     </div>
                 </div>
@@ -72,12 +72,22 @@
                                 <th>
                                     Vlr Total Por Producto
                                 </th>
+                                <th>
+                                    Acciones
+                                </th>
                             </thead>
                             <tbody>
-                                <tr *ngFor="let detalleFactura of detalleFacturas;let i=index">
-                                    <td>{{detalleFactura.nombreProducto}}</td>
-                                    <td>{{detalleFactura.unidadesProducto}}</td>
-                                    <td>{{detalleFactura.VlrTotalProducto}}</td>
+                                <tr *ngFor="let detalleFactura of dataDetalle;let i=index">
+                                    <td>{{detalleFactura.producto.nombre}}</td>
+                                    <td>{{detalleFactura.cantidad}}</td>
+                                    <td>{{detalleFactura.valorTotalProd}}</td>
+                                    <td>
+                                        <div class="btn-group flex-btn-group-container">
+                                            <button type="submit" class="btn btn-info btn-sm" (click)="eliminaRegistro(i)">                                                    
+                                                <span class="d-none d-md-inline">Eliminar registro</span>
+                                            </button>
+                                        </div>
+                                    </td>
                                 </tr>
                             </tbody>
                         </table>
@@ -85,7 +95,7 @@
                 </div>
             </div>
         </div>
-        <h3 style="color: red">Total A Pagar : 50000</h3>
+        <h3 style="color: red">Total A Pagar : {{totalPagar}}</h3>
         <button mat-raised-button type="submit" class="btn btn-success
-         pull-right">Registrar Venta</button>
+         pull-right" [disabled]="noVenta" (click)="guardaVenta()">Registrar Venta</button>
     </div>

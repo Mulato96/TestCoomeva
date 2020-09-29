@@ -6,14 +6,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.coomeva.superantojitos.domain.TestProducto;
-import com.coomeva.superantojitos.repo.ProductoDao;
-import com.coomeva.superantojitos.service.ProductoService;
+import com.coomeva.superantojitos.repo.TestProductoDao;
+import com.coomeva.superantojitos.service.TestProductoService;
 
-@Service(value = "productoService")
-public class ProductoServiceImpl implements ProductoService {
+@Service(value = "testProductoService")
+public class TestProductoServiceImpl implements TestProductoService {
 
 	@Autowired
-	private ProductoDao productoDao;
+	private TestProductoDao productoDao;
 
 	@Override
 	public List<TestProducto> findAll() {

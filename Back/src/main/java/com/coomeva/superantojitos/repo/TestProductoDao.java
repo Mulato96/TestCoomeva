@@ -6,6 +6,6 @@ import org.springframework.stereotype.Repository;
 import com.coomeva.superantojitos.domain.TestProducto;
 
 @Repository
-public interface ProductoDao extends JpaRepository<TestProducto, Long> {
+public interface TestProductoDao extends JpaRepository<TestProducto, Long> {
 
 }

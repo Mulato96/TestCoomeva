@@ -5,19 +5,21 @@ import java.io.Serializable;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
 
 import lombok.Data;
 
 @Entity
-@Table(name = "TEST_PRODUCTO")
+@Table(name = "TEST_FACTURA_DETALLE")
 @Data
-public class TestProducto implements Serializable {
+public class TestFacturaDetalle implements Serializable {
 
 	/**
 	* 
@@ -27,21 +29,14 @@ public class TestProducto implements Serializable {
 	@Id
 	@Basic(optional = false)
 	@NotNull
-	@Column(name = "ID_PRODUCTO")
+	@Column(name = "ID_FACTURA_DETALLE")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private long idProducto;
+	private long idFacturaDetalle;
 
 	@Basic(optional = false)
 	@NotNull
-	@Size(max = 30)
-	@Column(name = "CODIGO")
-	private String codigo = "";
-
-	@Basic(optional = false)
-	@NotNull
-	@Size(max = 100)
-	@Column(name = "NOMBRE")
-	private String nombre = "";
+	@Column(name = "CANTIDAD")
+	private int cantidad;
 
 	@Basic(optional = false)
 	@NotNull
@@ -50,7 +45,15 @@ public class TestProducto implements Serializable {
 
 	@Basic(optional = false)
 	@NotNull
-	@Column(name = "STOCK")
-	private int stock;
+	@Column(name = "VALOR_TOTAL")
+	private int valorTotal;
+
+	@JoinColumn(name = "ID_PRODUCTO", nullable = false)
+	@ManyToOne(optional = false, fetch = FetchType.EAGER)
+	private TestProducto producto;
+
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "ID_FACTURA", nullable = false, updatable = false)
+	private TestFactura factura;
 
 }
