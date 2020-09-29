@@ -34,8 +34,7 @@ public class TestFacturaServiceImpl implements TestFacturaService {
 			testFacturaDTO.setIdFactura(lstFacturas.get(i).getIdFactura());
 			testFacturaDTO.setFechaVenta(lstFacturas.get(i).getFechaVenta());
 			testFacturaDTO.setValorTotal(lstFacturas.get(i).getValorTotal());
-			testFacturaDTO.setCliente(lstFacturas.get(i).getCliente());
-			testFacturaDTO.setItems(lstFacturas.get(i).getItems());
+			testFacturaDTO.setCliente(lstFacturas.get(i).getCliente());			
 			lstFacturasDTO.add(testFacturaDTO);
 		}
 

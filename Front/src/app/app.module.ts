@@ -26,7 +26,7 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
     HttpClientModule,  
     ComponentsModule, 
     NgbModule,
-    RouterModule,
+    RouterModule,    
     AppRoutingModule,
     AgmCoreModule.forRoot({
       apiKey: 'YOUR_GOOGLE_MAPS_API_KEY'

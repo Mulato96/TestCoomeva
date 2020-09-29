@@ -64,3 +64,4 @@ INSERT INTO super_antojitos.test_producto(codigo, nombre, valor_unidad, stock) V
 INSERT INTO super_antojitos.test_producto(codigo, nombre, valor_unidad, stock) VALUES('0008','HUEVOS',11500,20);
 INSERT INTO super_antojitos.test_producto(codigo, nombre, valor_unidad, stock) VALUES('0009','PAPAS JAJAJAJA',6600,1);
 INSERT INTO super_antojitos.test_producto(codigo, nombre, valor_unidad, stock) VALUES('0010','DETERGENTE',5001000,3);
+

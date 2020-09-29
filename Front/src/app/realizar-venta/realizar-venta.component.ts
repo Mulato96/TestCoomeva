@@ -30,7 +30,9 @@ export class RealizarVentaComponent implements OnInit {
   cantidad: number;
   linesVenta: DetalleVentaDTO = new DetalleVentaDTO();
   dataDetalle: Array<any> = [];
-  constructor(private clientesService: ClientesService, private productosService: ProductosService, private facturaService: FacturaService) { }
+  constructor(private clientesService: ClientesService,
+    private productosService: ProductosService,
+    private facturaService: FacturaService) { }
 
   ngOnInit() {
     this.productosService.getProductos().subscribe(
@@ -77,7 +79,7 @@ export class RealizarVentaComponent implements OnInit {
   }
 
 
-  datosProducto() {    
+  datosProducto() {
     for (let i = 0; i < this.productos.length; i++) {
       if (this.producto.idProducto == this.productos[i].idProducto) {
         this.precioUnidad = this.productos[i].valorUnidad;
@@ -88,7 +90,7 @@ export class RealizarVentaComponent implements OnInit {
 
   addProducto() {
     this.linesVenta = new DetalleVentaDTO();
-    console.log("valor",this.producto);
+    console.log("valor", this.producto);
     if (this.producto == undefined || this.cantidad == undefined) {
       this.showNotification('top', 'left', "Es necesario elegir un producto y la cantidad deseada");
       return;
@@ -137,7 +139,8 @@ export class RealizarVentaComponent implements OnInit {
   }
 
 
-  guardaVenta() {        
+  guardaVenta() {
+
     if (this.dataDetalle.length <= 0) {
       this.showNotification('top', 'left', "No hay productos agregados para guardar venta");
       return;
@@ -156,11 +159,13 @@ export class RealizarVentaComponent implements OnInit {
 
   private onSaveSuccess(data: any) {
     //alerta de bien
+    this.showNotification('top', 'left', "Venta Guardada exitosamente");
     console.log("ddata", data);
   }
 
   private onSaveError(data: any) {
     //alerta de error
+
     console.log("ddata error", data);
   }
 

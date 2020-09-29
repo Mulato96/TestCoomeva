@@ -1,5 +1,7 @@
 package com.coomeva.superantojitos.controller;
 
+import java.util.List;
+
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -10,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.coomeva.superantojitos.dto.TestFacturaDTO;
 import com.coomeva.superantojitos.dto.VentaDTO;
 import com.coomeva.superantojitos.service.TestFacturaService;
 import com.coomeva.superantojitos.utilities.Constants;
@@ -29,7 +32,8 @@ public class TestFacturaController {
 	public ResponseService getAllFacturas() {
 		ResponseService response = new ResponseService();
 		try {
-			response.setData(facturaService.findAll());
+			List<TestFacturaDTO> lstFacturaDTO = facturaService.findAll();
+			response.setData(lstFacturaDTO);
 			response.setStatus(Status.OK);
 		} catch (Exception e) {
 			logger.error(Constants.ERROR_GET_PARAMETER, e);
